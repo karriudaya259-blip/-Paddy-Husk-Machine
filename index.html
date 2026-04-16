@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paddy Husk Plate Press – Automated Control System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f7fa;
+            color: #1e2a3e;
+        }
+        h1 {
+            color: #0056b3;
+            border-bottom: 3px solid #0056b3;
+            padding-bottom: 10px;
+        }
+        .screenshot {
+            text-align: center;
+            margin: 30px 0;
+        }
+        img {
+            max-width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .sim-link {
+            display: inline-block;
+            background-color: #0056b3;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .sim-link:hover {
+            background-color: #003d80;
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #555;
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌾 Automated Paddy Husk Plate Press – Control System</h1>
+    <p>This project simulates the electronic brain of an industrial machine that turns agricultural waste (paddy husk) into biodegradable plates. It uses an Arduino, a temperature sensor, a servo motor (press), LEDs, and push buttons.</p>
+
+    <div class="screenshot">
+        <img src="simulation.png" alt="Wokwi simulation running – Serial Monitor showing 'Plate ready!'">
+        <p><em>Simulation output: temperature reaches 120°C → press → plate ready</em></p>
+    </div>
+
+    <h2>🚀 Run the Simulation</h2>
+    <p>Click the button below to open the fully interactive simulation in your browser. No installation required.</p>
+    <a class="sim-link" href="https://wokwi.com/projects/461265364373497857" target="_blank">▶ Launch Wokwi Simulation</a>
+
+    <h2>📁 Project Files (optional)</h2>
+    <p>If you want to inspect or modify the code and circuit diagram, you can download them here:</p>
+    <ul>
+        <li><a href="diagram.json" download>diagram.json</a> – Wokwi circuit (right-click and save)</li>
+        <li><a href="code.ino" download>code.ino</a> – Arduino sketch (FSM, sensor, servo control)</li>
+    </ul>
+    <p><em>Note: These files are not required to run the simulation – the Wokwi link above already contains them.</em></p>
+
+    <h2>⚙️ How It Works</h2>
+    <ul>
+        <li>Press <strong>START</strong> → Heater LED (red) turns on.</li>
+        <li>Temperature sensor (DS18B20) monitors the heat. In the simulation, you manually set it to 130°C.</li>
+        <li>When temperature reaches 120°C, heater turns off, servo rotates to 90° (pressing).</li>
+        <li>After 3 seconds, servo returns to 0°, green "Plate Ready" LED turns on.</li>
+        <li><strong>STOP</strong> and <strong>RESET</strong> buttons work at any time.</li>
+    </ul>
+
+    <h2>🧠 Finite State Machine (FSM)</h2>
+    <p>The system is built as a classic FSM with four states: <code>IDLE → HEATING → PRESSING → PLATE_READY</code>. This is exactly how industrial controllers are designed.</p>
+
+    <div class="footer">
+        <p>📌 Project by Jyoshna Karri
+        <p>#EmbeddedSystems #Arduino #FSM #Sustainability</p>
+    </div>
+</body>
+</html>
