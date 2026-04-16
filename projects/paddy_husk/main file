@@ -1,30 +1,33 @@
-# Paddy Husk Machine – Automated Control System (Simulation)
+# Automated Paddy Husk Plate Press - Control System
 
-## Overview
-This project simulates an **automated heat‑press control system** for molding biodegradable plates from paddy husk.  
-The system uses an Arduino, a DS18B20 temperature sensor, a servo motor (press), LEDs, and push buttons.
+## 🎯 Project Overview
+This project is the digital brain for an automated press that turns agricultural waste (paddy husk) into biodegradable plates. It's a complete Finite State Machine (FSM) implemented on an Arduino.
 
-## How It Works
-- Press **START** → Heater LED (red) turns ON.
-- Temperature rises (simulated by manually setting DS18B20 to 130°C).
-- At 120°C, heater turns OFF, servo rotates to 90° (press), holds for 3 seconds.
-- Servo returns to 0°, ready LED (green) turns ON → plate ready.
-- **STOP** and **RESET** buttons work at any time.
+## 🔧 How It Works
+1.  **Start**: The operator presses the `START` button.
+2.  **Heating**: The system turns on the Heater LED and monitors the DS18B20 temperature sensor.
+3.  **Pressing**: Once the target temperature (120°C) is reached, the heater turns off, and a servo motor (simulating the press) rotates to 90 degrees to apply pressure.
+4.  **Release**: After a 3-second hold, the servo returns to 0 degrees, and the 'Plate Ready' LED turns on.
+5.  **Control**: Dedicated `STOP` and `RESET` buttons can halt or reset the process at any time.
 
-## Files
-- `diagram.json` – Wokwi circuit (connections)
-- `code.ino` – Arduino sketch (FSM, temperature reading, servo control)
-- `screenshot.png` – Serial Monitor output showing the sequence
+## 📊 System Architecture
+*   **Microcontroller**: Arduino Uno
+*   **Temperature Sensor**: DS18B20 (connected to A0 with a 4.7kΩ pull-up resistor)
+*   **Actuator**: Servo Motor (on Pin 7) to simulate the press
+*   **User Inputs**: 3 Push Buttons for START, STOP, and RESET
+*   **Indicators**: 2 LEDs for "Heater ON" and "Plate Ready" status
 
-## Simulation Tool
-[Wokwi](https://wokwi.com) – free online simulator.
+## 🧠 Finite State Machine (FSM)
+The system operates in four distinct states:
+*   `IDLE` -> `HEATING` -> `PRESSING` -> `PLATE_READY` -> `IDLE`
 
-## Status
-✅ Fully simulated and verified.  
+## 🎥 Simulation in Action
+<img src="simulation-running.jpeg" alt="Simulation running" width="600"/>
+*Caption: Screenshot of the Wokwi simulation showing the system in the 'Plate Ready' state.*
 
+## 🔗 Live Simulat
+You can interact with the fully functional simulation here: https://wokwi.com/projects/461265364373497857
 
-## How to Run
-1. Copy `diagram.json` and `code.ino` into a new Wokwi project.
-2. Start simulation.
-3. Press START, then right‑click DS18B20 → set temperature to 130°C.
-4. Watch the servo move and LEDs change.
+## 📁 Project Files
+*   `code.ino`: The main Arduino sketch containing the FSM logic.
+*   `diagram.json`: The Wokwi circuit diagram file.
