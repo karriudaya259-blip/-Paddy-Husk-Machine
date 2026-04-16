@@ -1,0 +1,30 @@
+# Paddy Husk Machine – Automated Control System (Simulation)
+
+## Overview
+This project simulates an **automated heat‑press control system** for molding biodegradable plates from paddy husk.  
+The system uses an Arduino, a DS18B20 temperature sensor, a servo motor (press), LEDs, and push buttons.
+
+## How It Works
+- Press **START** → Heater LED (red) turns ON.
+- Temperature rises (simulated by manually setting DS18B20 to 130°C).
+- At 120°C, heater turns OFF, servo rotates to 90° (press), holds for 3 seconds.
+- Servo returns to 0°, ready LED (green) turns ON → plate ready.
+- **STOP** and **RESET** buttons work at any time.
+
+## Files
+- `diagram.json` – Wokwi circuit (connections)
+- `code.ino` – Arduino sketch (FSM, temperature reading, servo control)
+- `screenshot.png` – Serial Monitor output showing the sequence
+
+## Simulation Tool
+[Wokwi](https://wokwi.com) – free online simulator.
+
+## Status
+✅ Fully simulated and verified.  
+
+
+## How to Run
+1. Copy `diagram.json` and `code.ino` into a new Wokwi project.
+2. Start simulation.
+3. Press START, then right‑click DS18B20 → set temperature to 130°C.
+4. Watch the servo move and LEDs change.
