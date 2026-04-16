@@ -3,84 +3,388 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paddy Husk Plate Press – Automated Control System</title>
+    <title>Paddy Husk Plate Press | Eco‑friendly Automation</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-            line-height: 1.6;
-            background-color: #f5f7fa;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9edf2 100%);
             color: #1e2a3e;
+            line-height: 1.6;
         }
-        h1 {
-            color: #0056b3;
-            border-bottom: 3px solid #0056b3;
-            padding-bottom: 10px;
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
-        .screenshot {
+
+        /* Header */
+        .header {
             text-align: center;
-            margin: 30px 0;
+            padding: 60px 20px 40px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
-        img {
-            max-width: 100%;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        .header h1 {
+            font-size: 2.8rem;
+            color: #2c5f2d;
+            margin-bottom: 15px;
         }
-        .sim-link {
-            display: inline-block;
-            background-color: #0056b3;
-            color: white;
-            padding: 12px 24px;
-            text-decoration: none;
-            border-radius: 6px;
+        .header h1 span {
+            background: #ffd966;
+            padding: 0 10px;
+            border-radius: 20px;
+        }
+        .header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #2c3e50;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-left: 6px solid #2c5f2d;
+            padding-left: 20px;
+            color: #1e4663;
+        }
+        .stats-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .stat {
+            flex: 1;
+            background: #f0f7ff;
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+        }
+        .stat .number {
+            font-size: 2.2rem;
             font-weight: bold;
+            color: #2c5f2d;
+        }
+        .stat .label {
+            font-size: 0.9rem;
+            color: #2c3e50;
+        }
+
+        /* Component list */
+        .component-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
             margin: 20px 0;
         }
-        .sim-link:hover {
-            background-color: #003d80;
+        .component-item {
+            background: #f8f9fa;
+            padding: 12px 18px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
+        .component-icon {
+            font-size: 1.5rem;
+        }
+
+        /* FSM diagram */
+        .fsm {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        .state {
+            background: #1e4663;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 60px;
+            font-weight: bold;
+        }
+        .arrow {
+            font-size: 1.8rem;
+            color: #2c5f2d;
+        }
+
+        /* Code block */
+        pre {
+            background: #1e2a3e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 16px;
+            overflow-x: auto;
+            font-size: 0.85rem;
+            margin: 20px 0;
+        }
+        details {
+            margin: 20px 0;
+        }
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+            background: #e9edf2;
+            padding: 12px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        .button {
+            display: inline-block;
+            background: #2c5f2d;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: 0.2s;
+        }
+        .button:hover {
+            background: #1e4663;
+            transform: scale(1.02);
+        }
+
         .footer {
+            text-align: center;
+            padding: 30px;
+            color: #5a6e7a;
+            border-top: 1px solid #cbd5e1;
             margin-top: 40px;
-            font-size: 0.9em;
-            color: #555;
-            border-top: 1px solid #ccc;
-            padding-top: 20px;
+        }
+        @media (max-width: 700px) {
+            .header h1 { font-size: 2rem; }
+            .fsm { flex-direction: column; align-items: center; }
+            .arrow { transform: rotate(90deg); }
         }
     </style>
 </head>
 <body>
-    <h1>🌾 Automated Paddy Husk Plate Press – Control System</h1>
-    <p>This project simulates the electronic brain of an industrial machine that turns agricultural waste (paddy husk) into biodegradable plates. It uses an Arduino, a temperature sensor, a servo motor (press), LEDs, and push buttons.</p>
+<div class="container">
 
-    <div class="screenshot">
-        <img src="simulation-running.jpeg" alt="Wokwi simulation running – Serial Monitor showing 'Plate ready!'">
-        <p><em>Simulation output: temperature reaches 120°C → press → plate ready</em></p>
+    <div class="header">
+        <h1>🌾 Paddy Husk <span>Plate Press</span></h1>
+        <p>Automated control system turning agricultural waste into biodegradable plates – saving the planet, one plate at a time.</p>
+        <a href="https://wokwi.com/projects/461265364373497857" target="_blank" class="button">▶️ Launch Live Simulation</a>
     </div>
 
-    <h2>🚀 Run the Simulation</h2>
-    <p>Click the button below to open the fully interactive simulation in your browser. No installation required.</p>
-    <a class="sim-link" href="https://wokwi.com/projects/461265364373497857" target="_blank">▶ Launch Wokwi Simulation</a>
+    <!-- Real-world impact -->
+    <div class="card">
+        <h2>🌍 The Real‑World Impact</h2>
+        <div class="stats-grid">
+            <div class="stat">
+                <div class="number">15‑20 Mt</div>
+                <div class="label">paddy husk waste generated annually in India</div>
+            </div>
+            <div class="stat">
+                <div class="number">350 Mt</div>
+                <div class="label">agricultural residue burnt → severe air pollution</div>
+            </div>
+            <div class="stat">
+                <div class="number">$23.6B</div>
+                <div class="label">biodegradable tableware market by 2033</div>
+            </div>
+        </div>
+        <p>Your machine directly addresses two crises: <strong>waste management</strong> and <strong>plastic pollution</strong>. Each plate made from paddy husk replaces single‑use plastic and stops stubble burning.</p>
+    </div>
 
-   
+    <!-- How it works + components -->
+    <div class="card">
+        <h2>⚙️ How It Works – Hardware & FSM</h2>
+        <p><strong>Components used (all simulated in Wokwi):</strong></p>
+        <div class="component-list">
+            <div class="component-item"><span class="component-icon">🎛️</span> Arduino Uno</div>
+            <div class="component-item"><span class="component-icon">🌡️</span> DS18B20 temp sensor</div>
+            <div class="component-item"><span class="component-icon">🔘</span> 3 push buttons (START, STOP, RESET)</div>
+            <div class="component-item"><span class="component-icon">🔴</span> Red LED (heater ON)</div>
+            <div class="component-item"><span class="component-icon">🟢</span> Green LED (plate ready)</div>
+            <div class="component-item"><span class="component-icon">🔄</span> Servo motor (press mechanism)</div>
+            <div class="component-item"><span class="component-icon">🔌</span> 4.7kΩ & 220Ω resistors</div>
+        </div>
+        <p><strong>Finite State Machine (FSM) – the brain of the operation:</strong></p>
+        <div class="fsm">
+            <span class="state">IDLE</span>
+            <span class="arrow">→</span>
+            <span class="state">HEATING</span>
+            <span class="arrow">→</span>
+            <span class="state">PRESSING</span>
+            <span class="arrow">→</span>
+            <span class="state">PLATE READY</span>
+            <span class="arrow">→</span>
+            <span class="state">IDLE</span>
+        </div>
+        <ul>
+            <li><strong>IDLE:</strong> Waiting for START button.</li>
+            <li><strong>HEATING:</strong> Red LED ON, monitor temperature (DS18B20).</li>
+            <li><strong>PRESSING:</strong> At 120°C, heater OFF, servo rotates 90°, holds for 3 seconds.</li>
+            <li><strong>PLATE READY:</strong> Servo returns, green LED ON, then back to IDLE.</li>
+        </ul>
+        <p>STOP and RESET buttons can interrupt or reset the process anytime – safety first.</p>
+    </div>
 
-    <h2>⚙️ How It Works</h2>
-    <ul>
-        <li>Press <strong>START</strong> → Heater LED (red) turns on.</li>
-        <li>Temperature sensor (DS18B20) monitors the heat. In the simulation, you manually set it to 130°C.</li>
-        <li>When temperature reaches 120°C, heater turns off, servo rotates to 90° (pressing).</li>
-        <li>After 3 seconds, servo returns to 0°, green "Plate Ready" LED turns on.</li>
-        <li><strong>STOP</strong> and <strong>RESET</strong> buttons work at any time.</li>
-    </ul>
+    <!-- Why Arduino? -->
+    <div class="card">
+        <h2>🔧 Why Arduino is the Perfect Choice</h2>
+        <p>This isn't a toy project – it's a blueprint for industrial automation.</p>
+        <ul>
+            <li><strong>Rapid prototyping:</strong> From idea to working simulation in days.</li>
+            <li><strong>Scalability:</strong> The same logic runs on industrial micro‑PLCs like Arduino Opta.</li>
+            <li><strong>Real‑time control:</strong> Reads sensor thousands of times per second, drives actuators precisely.</li>
+            <li><strong>Low‑cost & accessible:</strong> Perfect for rural entrepreneurship – exactly where this technology is needed.</li>
+        </ul>
+        <p>Your code implements a professional Finite State Machine – the gold standard for embedded controllers.</p>
+    </div>
 
-    <h2>🧠 Finite State Machine (FSM)</h2>
-    <p>The system is built as a classic FSM with four states: <code>IDLE → HEATING → PRESSING → PLATE_READY</code>. This is exactly how industrial controllers are designed.</p>
+    <!-- Code preview (collapsible) -->
+    <div class="card">
+        <h2>📜 Arduino Sketch (<code>code.ino</code>)</h2>
+        <details>
+            <summary>Click to view full code</summary>
+            <pre><code>#include &lt;OneWire.h&gt;
+#include &lt;DallasTemperature.h&gt;
+#include &lt;Servo.h&gt;
+
+#define ONE_WIRE_BUS A0
+#define HEATER_LED_PIN 4
+#define READY_LED_PIN 6
+#define SERVO_PIN 7
+#define START_BTN_PIN 11
+#define STOP_BTN_PIN 12
+#define RESET_BTN_PIN 13
+
+const float TARGET_TEMP = 120.0;
+const int PRESS_ANGLE = 90;
+const int RELEASE_ANGLE = 0;
+const unsigned long PRESS_HOLD_MS = 3000;
+
+OneWire oneWire(ONE_WIRE_BUS);
+DallasTemperature sensors(&oneWire);
+Servo pressServo;
+
+enum State { IDLE, HEATING, PRESSING, PLATE_READY };
+State currentState = IDLE;
+float currentTemp = 0.0;
+unsigned long pressStartTime = 0;
+
+void setup() {
+  Serial.begin(9600);
+  sensors.begin();
+  pressServo.attach(SERVO_PIN);
+  pressServo.write(RELEASE_ANGLE);
+  pinMode(HEATER_LED_PIN, OUTPUT);
+  pinMode(READY_LED_PIN, OUTPUT);
+  pinMode(START_BTN_PIN, INPUT_PULLUP);
+  pinMode(STOP_BTN_PIN, INPUT_PULLUP);
+  pinMode(RESET_BTN_PIN, INPUT_PULLUP);
+  digitalWrite(HEATER_LED_PIN, LOW);
+  digitalWrite(READY_LED_PIN, LOW);
+  Serial.println("System Ready. Press START.");
+}
+
+void loop() {
+  sensors.requestTemperatures();
+  currentTemp = sensors.getTempCByIndex(0);
+
+  if (digitalRead(START_BTN_PIN) == LOW && currentState == IDLE) {
+    currentState = HEATING;
+    digitalWrite(HEATER_LED_PIN, HIGH);
+    Serial.println("START pressed. Heating started.");
+    delay(200);
+  }
+  if (digitalRead(STOP_BTN_PIN) == LOW && currentState != IDLE) {
+    emergencyStop();
+    delay(200);
+  }
+  if (digitalRead(RESET_BTN_PIN) == LOW) {
+    resetSystem();
+    delay(200);
+  }
+
+  switch (currentState) {
+    case HEATING:
+      Serial.print("Heating... Temperature: ");
+      Serial.print(currentTemp);
+      Serial.println(" °C");
+      if (currentTemp >= TARGET_TEMP) {
+        digitalWrite(HEATER_LED_PIN, LOW);
+        currentState = PRESSING;
+        pressStartTime = millis();
+        pressServo.write(PRESS_ANGLE);
+        Serial.println("Target reached. Pressing...");
+      }
+      break;
+    case PRESSING:
+      if (millis() - pressStartTime >= PRESS_HOLD_MS) {
+        pressServo.write(RELEASE_ANGLE);
+        currentState = PLATE_READY;
+        digitalWrite(READY_LED_PIN, HIGH);
+        Serial.println("Pressing complete. Plate ready!");
+      }
+      break;
+    case PLATE_READY:
+      delay(2000);
+      digitalWrite(READY_LED_PIN, LOW);
+      currentState = IDLE;
+      Serial.println("System reset. Ready for next cycle.");
+      break;
+    default: break;
+  }
+  delay(100);
+}
+
+void emergencyStop() {
+  digitalWrite(HEATER_LED_PIN, LOW);
+  digitalWrite(READY_LED_PIN, LOW);
+  pressServo.write(RELEASE_ANGLE);
+  currentState = IDLE;
+  Serial.println("EMERGENCY STOP: System halted.");
+}
+
+void resetSystem() {
+  emergencyStop();
+  Serial.println("System reset to IDLE.");
+}
+</code></pre>
+        </details>
+    </div>
+
+    <!-- Wokwi link & final CTA -->
+    <div class="card" style="text-align: center;">
+        <h2>🚀 See It in Action</h2>
+        <p>Click the button below to open the fully interactive simulation. No hardware needed – just your browser.</p>
+        <a href="https://wokwi.com/projects/461265364373497857" target="_blank" class="button">▶ Launch Wokwi Simulation</a>
+        <p style="margin-top: 20px; font-size: 0.9rem;">In the simulation: Press START → right‑click DS18B20 → set temperature to 130°C → watch the servo move and LEDs change.</p>
+    </div>
 
     <div class="footer">
-        <p>📌 Project by Jyoshna Karri
-        <p>#EmbeddedSystems #Arduino #FSM #Sustainability</p>
+        <p>Project by Jyoshna | <a href="https://github.com/karriudaya259-blip/-Paddy-Husk-Machine" target="_blank">GitHub Repository</a> | #EmbeddedSystems #Arduino #FSM #Sustainability</p>
+        <p>🌱 Turning waste into wealth – one plate at a time.</p>
     </div>
+</div>
 </body>
 </html>
