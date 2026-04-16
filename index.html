@@ -221,6 +221,20 @@
             margin-top: 40px;
         }
 
+        .versatility-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .versatility-item {
+            background: #eef2ff;
+            border-radius: 40px;
+            padding: 8px 20px;
+            font-weight: 500;
+        }
+
         @media (max-width: 700px) {
             .header h1 { font-size: 1.8rem; }
             .fsm { flex-direction: column; align-items: center; }
@@ -235,8 +249,8 @@
 <div class="container">
 
     <div class="header">
-        <h1>🌾 Paddy Husk <span>Plate Press</span></h1>
-        <p>Automated control system turning agricultural waste into biodegradable tableware – designed for India's circular economy.</p>
+        <h1>🌾 Paddy Husk <span>Multi‑Product Press</span></h1>
+        <p>Automated control system turning agricultural waste into <strong>plates, vases, decorative pots, trays & more</strong> – designed for India's circular economy.</p>
         <a href="https://wokwi.com/projects/461265364373497857" target="_blank" class="btn">▶️ Launch Live Simulation</a>
     </div>
 
@@ -265,7 +279,23 @@
                 <div class="label" style="font-size:0.75rem">Punjab + Haryana – despite 37% decline</div>
             </div>
         </div>
-        <p style="margin-top: 12px;"><strong>India's husk crisis is real</strong> – but it’s also an opportunity. With <strong>₹45k–₹75k</strong> for a semi‑automatic plate machine or just <strong>₹1,500–₹3,000</strong> for the automation kit, small‑scale entrepreneurs and rural hubs can turn low‑cost husk into high‑value biodegradable tableware. Your simulation proves the brain behind the machine works reliably.</p>
+        <p style="margin-top: 12px;"><strong>India's husk crisis is real</strong> – but it’s also an opportunity. With <strong>₹45k–₹75k</strong> for a semi‑automatic plate machine or just <strong>₹1,500–₹3,000</strong> for the automation kit, small‑scale entrepreneurs and rural hubs can turn low‑cost husk into high‑value biodegradable products. Your simulation proves the brain behind the machine works reliably.</p>
+    </div>
+
+    <!-- NEW SECTION: Beyond Plates – Endless Possibilities -->
+    <div class="card">
+        <h2>🎨 Beyond Plates – Endless Possibilities</h2>
+        <p>This automation system is not limited to plates. By simply changing the <strong>mould</strong> (the mechanical die), the same press can produce:</p>
+        <div class="versatility-grid">
+            <span class="versatility-item">🍽️ Plates & bowls</span>
+            <span class="versatility-item">🏺 Flower vases</span>
+            <span class="versatility-item">🌱 Decorative pots</span>
+            <span class="versatility-item">📦 Trays & organisers</span>
+            <span class="versatility-item">🎨 Custom moulded items</span>
+            <span class="versatility-item">🧺 Storage boxes</span>
+        </div>
+        <p><strong>Why this matters for today's generation:</strong> Consumers and businesses are actively seeking eco‑friendly, plastic‑free alternatives. From wedding decor to restaurant tableware, from gardening pots to corporate gifts – the demand for biodegradable, natural‑fibre products is exploding. Your machine empowers local entrepreneurs to tap into this market with minimal investment.</p>
+        <p>Moreover, the <strong>same control logic</strong> (temperature + pressure + timing) works for any mould. The Arduino code does not change – only the physical mould and the press settings (angle, hold time) can be adjusted via variables. This makes the system <strong>adaptable, scalable, and future‑proof</strong>.</p>
     </div>
 
     <!-- MACHINE COSTS & COMPONENTS -->
@@ -293,7 +323,7 @@
                 <p style="font-size:0.85rem; margin-top: 12px;">(prices from Indian electronics suppliers, 2026)</p>
             </div>
         </div>
-        <p>Your <strong>Arduino‑based controller</strong> works with any mechanical press. It can upgrade traditional machines to fully automated, precise systems – saving energy, reducing waste, and making plate quality consistent. <strong>That’s the advantage of embedded automation.</strong></p>
+        <p>Your <strong>Arduino‑based controller</strong> works with any mechanical press. It can upgrade traditional machines to fully automated, precise systems – saving energy, reducing waste, and making product quality consistent. <strong>That’s the advantage of embedded automation.</strong></p>
     </div>
 
     <!-- COMPONENTS LIST (with prices) -->
@@ -342,6 +372,7 @@
             <li><strong>Low cost & accessible</strong> – official boards start at ₹1,800, clones as low as ₹300. Perfect for students and small workshops.</li>
             <li><strong>Real‑time control</strong> – reads the temperature sensor thousands of times per second, controls servo precisely.</li>
             <li><strong>Scalable to industrial PLCs</strong> – same FSM logic runs on Arduino Opta, used for factory automation.</li>
+            <li><strong>Adaptable to any mould</strong> – change the press angle and hold time via variables; the hardware remains the same. Produce plates, vases, pots – just swap the die.</li>
             <li><strong>Huge ecosystem</strong> – DS18B20, servo, LCD, all have ready‑to‑use libraries.</li>
         </ul>
         <p>Your simulation proves that even a low‑cost Arduino can manage an industrial heat‑press cycle with ±0.5°C accuracy and millisecond timing.</p>
@@ -477,21 +508,14 @@ void resetSystem() {
                 <div class="label">India bans single‑use plastic</div>
             </div>
         </div>
-        <p>The market for biodegradable plates is expanding fast. With <strong>government support</strong> (Swachh Bharat, plastic bans) and <strong>rising environmental awareness</strong>, converting paddy husk into tableware is both profitable and sustainable. Your automation kit fits perfectly into this ecosystem – it’s low‑cost, open‑source, and ready for rural entrepreneurs.</p>
+        <p>The market for biodegradable products is expanding fast. With <strong>government support</strong> (Swachh Bharat, plastic bans) and <strong>rising environmental awareness</strong>, converting paddy husk into tableware, vases, and decorative items is both profitable and sustainable. Your automation kit fits perfectly into this ecosystem – it’s low‑cost, open‑source, and ready for rural entrepreneurs.</p>
     </div>
 
-    <!-- SIMULATION CTA -->
-    <div class="card" style="text-align: center;">
-        <h2>🚀 See it in action (live simulation)</h2>
-        <p>Click below to open the fully interactive Wokwi simulation. No hardware needed – works in your browser.</p>
-        <a href="https://wokwi.com/projects/461265364373497857" target="_blank" class="btn">▶ Launch Wokwi Simulation</a>
-        <p style="margin-top: 20px; font-size: 0.9rem;">💡 <strong>Quick guide:</strong> Press START → right‑click the DS18B20 → set temperature to 130°C → watch the servo move and LEDs change.</p>
-        <p style="margin-top: 12px;">📁 <a href="https://github.com/karriudaya259-blip/-Paddy-Husk-Machine" target="_blank">GitHub Repository</a> | 🔧 All schematics and code available</p>
-    </div>
+  
 
     <div class="footer">
         <p>Project by Jyoshna | #EmbeddedSystems #Arduino #AtmanirbharBharat #PaddyHusk</p>
-        <p>🌱 Turning agricultural residue into wealth – one plate at a time.</p>
+        <p>🌱 Turning agricultural residue into plates, vases, decorative pots, trays and more – one product at a time.</p>
     </div>
 </div>
 </body>
